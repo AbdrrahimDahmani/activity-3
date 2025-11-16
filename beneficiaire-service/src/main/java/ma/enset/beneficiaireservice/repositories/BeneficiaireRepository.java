@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface BeneficiaireRepository extends JpaRepository<Beneficiaire, Long> {
-    List<Beneficiaire> findByNomContaining(String nom);
+    List<Beneficiaire> findByNomContainingIgnoreCaseOrPrenomContainingIgnoreCase(String nom, String prenom);
 }

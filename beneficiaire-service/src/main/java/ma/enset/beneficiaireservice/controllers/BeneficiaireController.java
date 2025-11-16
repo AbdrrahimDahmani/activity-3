@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/beneficiaires")
+@CrossOrigin(origins="*")
 @Tag(name = "Beneficiaire", description = "API de gestion des bénéficiaires")
 public class BeneficiaireController {
     
@@ -52,6 +53,6 @@ public class BeneficiaireController {
     @GetMapping("/search")
     @Operation(summary = "Rechercher des bénéficiaires par nom")
     public List<Beneficiaire> searchBeneficiaires(@RequestParam String nom) {
-        return beneficiaireRepository.findByNomContaining(nom);
+        return beneficiaireRepository.findByNomContainingIgnoreCaseOrPrenomContainingIgnoreCase(nom, nom);
     }
 }
